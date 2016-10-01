@@ -7,14 +7,17 @@ const routes = require('./src/routes');
 const QuoteService = require('./src/quote_service');
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync(__dirname + '/config.json'));
+const RedisStore = require('connect-redis')(session);
 
 const app = express();
 
 app.use(morgan('combined'));
 app.use(express.static('public'));
 
-
-app.use(session(config.session));
+const sessionOptions = Object.assign({}, config.session, {
+  store: new RedisStore({})
+});
+app.use(session(sessionOptions));
 
 
 nunjucks.configure('views', {
