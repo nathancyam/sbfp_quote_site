@@ -5,6 +5,8 @@ const _ = require('lodash');
 const session = require('express-session');
 const routes = require('./src/routes');
 const QuoteService = require('./src/quote_service');
+const fs = require('fs');
+const config = JSON.parse(fs.readFileSync(__dirname + '/config.json'));
 
 const app = express();
 
@@ -12,13 +14,7 @@ app.use(morgan('combined'));
 app.use(express.static('public'));
 
 
-app.use(session({
-  name: 'sbfp',
-  secret: 'asdkfjdklsaruoldf908asdlfkjals0198234jlksjdflsfjlk1j23*(^*&$4',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {}
-}));
+app.use(session(config.session));
 
 
 nunjucks.configure('views', {
