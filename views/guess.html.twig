@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <section id="guess-container">
+        <div class="guess-game">
+            <a href="/">Difficulty is too strong. Back down like a coward</a>
+            <div id="score"></div>
+        </div>
+        <div id="quote">
+            <form method="post" action="/difficulty">
+                <select name="difficulty">
+                    <option value="hardmode">Hard Mode</option>
+                    <option value="person">Show Person</option>
+                    <option value="show">Show Show</option>
+                </select>
+                <button type="submit">Update</button>
+            </form>
+            <form id="guessForm" method="post" onsubmit="submitGuess(event);">
+                <input type="hidden" name="id" id="id" value="{{ quote.id }}" />
+                {% if gameMode == 'show' %}
+                    <p class="quote-game">{{quote.game}}</p>
+                {% else %}
+                    <select name="origin" id="origin">
+                        {% for val, origin in origins %}
+                            <option value="{{ val }}">{{ origin }}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+
+                <p class="quote-text">{{quote.quote}}</p>
+
+                {% if gameMode == 'person' %}
+                    <p class="quote-speaker">- {{quote.speaker}}</p>
+                {% else %}
+                    <select name="speaker" id="speaker">
+                        {% for val, speaker in speakers %}
+                            <option value="{{ val }}">{{ speaker }}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+                <button type="submit">Submit</button>
+                <button type="button" onclick="next()">Next Quote</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

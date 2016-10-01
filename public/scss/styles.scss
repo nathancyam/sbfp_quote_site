@@ -1,0 +1,131 @@
+$matt-bg: black;
+$matt-text: white;
+
+$liam-bg: white;
+$liam-text: black;
+
+$pat-bg: #ff6a00;
+$pat-text: white;
+
+$wool-bg: #821a82;
+$wool-text: #20ce48;
+
+html, body {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+%text-shadow {
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+body, #quote-container, #guess-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.guess-game {
+  position: absolute;
+  padding: 15px;
+  top: 0;
+  right: 0;
+
+  a {
+    text-decoration: none;
+    padding-bottom: 15px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+#quote-container, #guess-container {
+  height: 100%;
+  flex: 1;
+}
+
+#guess-container {
+  background-color: #193441;
+  color: #91aa9d;
+
+  .guess-game {
+    color: #a9c7b8;
+
+    a {
+      color: #a9c7b8;
+    }
+  }
+}
+
+#quote {
+  text-align: center;
+
+  .quote-text, .quote-speaker, .quote-game {
+    @extend %text-shadow;
+    font-weight: bold;
+  }
+
+  .quote-text {
+    padding: 0 15px;
+    font-size: 32pt;
+  }
+
+  .quote-speaker {
+    font-size: 18pt;
+  }
+
+  .quote-game {
+    font-size: 16pt;
+  }
+}
+
+.quote-liam {
+  background-color: $liam-bg;
+  color: $liam-text;
+
+  .guess-game {
+    color: $liam-text;
+  }
+}
+
+.quote-pat {
+  background-color: $pat-bg;
+  color: $pat-text;
+
+  .guess-game {
+    color: $pat-text;
+  }
+}
+
+.quote-matt {
+  background-color: $matt-bg;
+  color: $matt-text;
+
+  .guess-game {
+    color: $matt-text;
+  }
+}
+
+.quote-wool {
+  background-color: $wool-bg;
+  color: $wool-text;
+
+  .guess-game {
+    color: $wool-text;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 15px;
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
