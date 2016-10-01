@@ -17,21 +17,21 @@ app.use(express.static('public'));
 const sessionOptions = Object.assign({}, config.session, {
   store: new RedisStore({})
 });
+
 app.use(session(sessionOptions));
 
-
-nunjucks.configure('views', {
+nunjucks.configure(__dirname + '/views', {
   autoescape: true,
   express: app
 });
 
 function boot(app) {
-  app.listen(3000, err => {
+  app.listen(4567, err => {
     if (err) {
       console.error(err);
     }
 
-    console.log('Server started and listening to port 3000');
+    console.log('Server started and listening to port 4567');
   });
 }
 
