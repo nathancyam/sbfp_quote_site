@@ -7,7 +7,7 @@
             <div id="score"></div>
         </div>
         <div id="quote">
-            <form method="post" action="/difficulty">
+            <form id="difficulty" method="post" action="/difficulty">
                 <select name="difficulty">
                     <option value="hardmode">Hard Mode</option>
                     <option value="person">Show Person</option>
@@ -38,8 +38,10 @@
                         {% endfor %}
                     </select>
                 {% endif %}
-                <button type="submit">Submit</button>
-                <button type="button" onclick="next()">Next Quote</button>
+                <div class="buttons">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="next()">Next Quote</button>
+                </div>
             </form>
         </div>
     </section>
