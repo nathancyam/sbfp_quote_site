@@ -30,6 +30,23 @@ module.exports = function (app) {
     res.render('quote.html.twig', { quote, bodyClass });
   });
 
+  app.get('/guess/new', (req, res) => {
+    const quoteService = req.app.get('quote_service');
+    const { id, quote, speaker, game } = quoteService.getRandomQuote();
+    const gameMode = req.session.gameMode;
+
+    switch (gameMode) {
+      case 'hardmode':
+        return res.json({ id, quote });
+
+      case 'show':
+        return res.json({ id, quote, game });
+
+      case 'person':
+        return res.json({ id, quote, speaker });
+    }
+  });
+
   app.get('/guess', (req, res) => {
     const session = req.session;
     const gameMode = session.gameMode || 'hardmode';
@@ -44,7 +61,14 @@ module.exports = function (app) {
       matt: 'Matt',
       pat: 'Pat'
     };
-    res.render('guess.html.twig', { quote, origins, speakers, gameMode });
+
+    const jsonOrigins = Object.keys(origins)
+      .reduce((accl, el) => {
+        accl.push({ label: origins[el], value: el });
+        return accl;
+      }, []);
+
+    res.render('guess.html.twig', { quote, origins, speakers, gameMode, jsonOrigins });
   });
 
   app.post('/guess', jsonParser, (req, res) => {

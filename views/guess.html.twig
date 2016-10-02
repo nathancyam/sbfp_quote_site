@@ -45,4 +45,54 @@
             </form>
         </div>
     </section>
+    <div id="example"></div>
+{% endblock %}
+
+{% block templates %}
+    <script type="text/javascript">
+    var origins = {{ jsonOrigins | dump | safe }};
+    </script>
+{% raw %}
+    <section>
+        <script type="x-template" id="template">
+            <div>
+                {{ person }}
+                {{ difficulty }}
+                <select-node
+                    :name-value="diffValue"
+                    :select-value="difficulty"
+                    :select-options="diffOptions"
+                    v-on:update="updateDiff"
+                ></select-node>
+                <select-node
+                    :name-value="showValue"
+                    :select-value="show"
+                    :select-options="showOptions"
+                    v-on:update="updateShow"
+                ></select-node>
+                <quote :current-quote="quote"></quote>
+                <select-node
+                    :name-value="personValue"
+                    :select-value="person"
+                    :select-options="peopleOptions"
+                    v-on:update="updatePerson"
+                ></select-node>
+                <button type="submit" v-on:click="submitAnswer($event)">Submit</button>
+            </div>
+        </script>
+        <script type="x-template" id="tmpl-select">
+            <select v-model="selected" v-bind:name="name" v-bind:id="name" v-on:change="onChange">
+                <option v-for="option in options" v-bind:value="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+        </script>
+    </section>
+{% endraw %}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="//unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="//cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript" src="/js/game.js"></script>
 {% endblock %}
