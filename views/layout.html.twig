@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"></meta>
     <title>Super Best Friends Play Quotes | No Context is Best Context</title>
     <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body class="{{ bodyClass }}">
     {% block header %}{% endblock %}
     {% block content %}{% endblock %}
+    {% block templates %}{% endblock %}
     <footer>
         For more, go to <a href="//superbestfriendsplay.com"><strong>Super Best Friends Play</strong></a>
     </footer>
-    <script type="text/javascript" src="/js/game.js"></script>
+    {% block javascripts %}{% endblock %}
 </body>
 </html>
