@@ -4,18 +4,17 @@ const nunjucks = require('nunjucks');
 const morgan = require('morgan');
 const _ = require('lodash');
 const session = require('express-session');
-const routes = require('./src/routes');
-const QuoteService = require('./src/quote_service');
+const routes = require('./backend/routes');
+const QuoteService = require('./backend/quote_service');
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync(__dirname + '/config.json'));
+const config = JSON.parse(fs.readFileSync(__dirname + '/../config.json'));
 const RedisStore = require('connect-redis')(session);
-const sockets = require('./src/sockets').setupSockets;
+const sockets = require('./backend/sockets').setupSockets;
 
 const app = express();
 const server = http.Server(app);
 const io = require('socket.io')(server);
 
-app.use(morgan('combined'));
 app.use(express.static('public'));
 
 const sessionOptions = Object.assign({}, config.session, {
@@ -30,11 +29,13 @@ let nunjunksConfig = {
 };
 
 if (process.env['NODE_ENV'] === 'production') {
+  app.use(morgan('combined'));
   console.log('Templates: Production');
-  nunjucks.configure(__dirname + '/views', nunjucks);
+  nunjucks.configure(__dirname + '/../views', nunjucks);
 } else {
+  app.use(morgan('dev'));
   console.log('Templates: Development');
-  nunjucks.configure(__dirname + '/views', Object.assign({}, nunjunksConfig, config.nunjucks));
+  nunjucks.configure(__dirname + '/../views', Object.assign({}, nunjunksConfig, config.nunjucks));
 }
 
 
