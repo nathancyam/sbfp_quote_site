@@ -31,6 +31,25 @@ class QuoteService {
     return this.quotes[Math.floor(Math.random() * this.quotes.length)];
   }
 
+  getRandomQuoteForDifficulty(gameMode = 'hardmode') {
+    const { id, quote, game, speaker } = this.getRandomQuote();
+
+    switch (gameMode) {
+      case 'hardmode':
+        return { id, quote };
+
+      case 'show':
+        return { id, quote, game };
+
+      case 'person':
+        return { id, quote, speaker };
+
+      default:
+        throw new Error('Invalid game mode type given.');
+        break;
+    }
+  }
+
   getOrigins() {
     if (this.origins === null) {
       let origins = this.quotes.map(el => el.game);

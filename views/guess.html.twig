@@ -6,93 +6,19 @@
             <a href="/">Difficulty is too strong. Back down like a coward</a>
             <div id="score"></div>
         </div>
-        <div id="quote">
-            <form id="difficulty" method="post" action="/difficulty">
-                <select name="difficulty">
-                    <option value="hardmode">Hard Mode</option>
-                    <option value="person">Show Person</option>
-                    <option value="show">Show Show</option>
-                </select>
-                <button type="submit">Update</button>
-            </form>
-            <form id="guessForm" method="post" onsubmit="submitGuess(event);">
-                <input type="hidden" name="id" id="id" value="{{ quote.id }}" />
-                {% if gameMode == 'show' %}
-                    <p class="quote-game">{{quote.game}}</p>
-                {% else %}
-                    <select name="origin" id="origin">
-                        {% for val, origin in origins %}
-                            <option value="{{ val }}">{{ origin }}</option>
-                        {% endfor %}
-                    </select>
-                {% endif %}
-
-                <p class="quote-text">{{quote.quote}}</p>
-
-                {% if gameMode == 'person' %}
-                    <p class="quote-speaker">- {{quote.speaker}}</p>
-                {% else %}
-                    <select name="speaker" id="speaker">
-                        {% for val, speaker in speakers %}
-                            <option value="{{ val }}">{{ speaker }}</option>
-                        {% endfor %}
-                    </select>
-                {% endif %}
-                <div class="buttons">
-                    <button type="submit">Submit</button>
-                    <button type="button" onclick="next()">Next Quote</button>
-                </div>
-            </form>
-        </div>
+        <div id="game"></div>
     </section>
-    <div id="example"></div>
 {% endblock %}
 
 {% block templates %}
     <script type="text/javascript">
     var origins = {{ jsonOrigins | dump | safe }};
+    var quote = {{ quote | dump | safe }};
+    var difficulty = {{ gameMode | dump | safe }};
     </script>
-{% raw %}
-    <section>
-        <script type="x-template" id="template">
-            <div>
-                {{ person }}
-                {{ difficulty }}
-                <select-node
-                    :name-value="diffValue"
-                    :select-value="difficulty"
-                    :select-options="diffOptions"
-                    v-on:update="updateDiff"
-                ></select-node>
-                <select-node
-                    :name-value="showValue"
-                    :select-value="show"
-                    :select-options="showOptions"
-                    v-on:update="updateShow"
-                ></select-node>
-                <quote :current-quote="quote"></quote>
-                <select-node
-                    :name-value="personValue"
-                    :select-value="person"
-                    :select-options="peopleOptions"
-                    v-on:update="updatePerson"
-                ></select-node>
-                <button type="submit" v-on:click="submitAnswer($event)">Submit</button>
-            </div>
-        </script>
-        <script type="x-template" id="tmpl-select">
-            <select v-model="selected" v-bind:name="name" v-bind:id="name" v-on:change="onChange">
-                <option v-for="option in options" v-bind:value="option.value">
-                    {{ option.label }}
-                </option>
-            </select>
-        </script>
-    </section>
-{% endraw %}
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="//unpkg.com/vue/dist/vue.js"></script>
     <script type="text/javascript" src="//cdn.socket.io/socket.io-1.4.5.js"></script>
-    <script type="text/javascript" src="/js/game.js"></script>
+    <script type="text/javascript" src="/js/build.game.js"></script>
 {% endblock %}

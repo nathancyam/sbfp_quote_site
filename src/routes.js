@@ -53,7 +53,7 @@ module.exports = function (app) {
     session.score = session.score || 0;
 
     const quoteService = req.app.get('quote_service');
-    const quote = quoteService.getRandomQuote();
+    const quote = quoteService.getRandomQuoteForDifficulty(gameMode);
     const origins = quoteService.getOrigins();
     const speakers = {
       liam: 'Liam',
@@ -68,7 +68,13 @@ module.exports = function (app) {
         return accl;
       }, []);
 
-    res.render('guess.html.twig', { quote, origins, speakers, gameMode, jsonOrigins });
+    res.render('guess.html.twig', {
+      quote,
+      origins,
+      speakers,
+      gameMode,
+      jsonOrigins
+    });
   });
 
   app.post('/guess', jsonParser, (req, res) => {
@@ -85,18 +91,19 @@ module.exports = function (app) {
       return res.json({ status: 'SUCCESS', score: session.score });
     }
 
-    return res.json({ status: 'FAILED', score: session.score });
+    const correctAnswer = quoteService.findById(body.id);
+    return res.json({ status: 'FAILED', score: session.score, correctAnswer });
   });
 
-  app.post('/difficulty', urlencodedParser, (req, res) => {
+  app.post('/difficulty', jsonParser, (req, res) => {
     const difficulty = req.body['difficulty'];
     const session = req.session;
 
     if (['person', 'show', 'hardmode'].find(el => difficulty)) {
       session.gameMode = difficulty;
-      return res.redirect('/guess');
+      return res.json({ status: 'SUCCESS', message: `Difficulty updated to ${difficulty}`});
     }
 
-    return res.redirect('/');
+    return res.statusCode(400).json({ status: 'ERROR' });
   });
 };

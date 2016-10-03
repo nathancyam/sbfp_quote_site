@@ -32,8 +32,15 @@ function socketReducers(initialState = { players: [] }, action) {
     }
 
     case TYPES.GAME_SCORE_POINT: {
-      console.log(action);
-      return initialState;
+      const { player, score } = payload;
+      const players = initialState.players;
+      const updatePlayers = players.map(el => {
+        if (el.id === player.id)  {
+          return Object.assign({}, el, { score });
+        }
+        return el;
+      });
+      return Object.assign({}, initialState, {players: updatePlayers});
     }
 
     default: {
@@ -60,12 +67,12 @@ function exitGame(player) {
   };
 }
 
-function scorePoint(player, scoreObj) {
+function scorePoint(player, score) {
   return {
     type: TYPES.GAME_SCORE_POINT,
     payload: {
       player,
-      scoreObj
+      score
     }
   };
 }
@@ -84,6 +91,12 @@ function SocketHandler(socket) {
   store.subscribe(() => {
     const state = store.getState();
     socket.emit('game:state_change', state.sockets);
+  });
+
+  socket.on('game:score_point', payload => {
+    console.log('game:score_point');
+    console.log(payload);
+    Actions.scorePoint(payload.player, payload.score);
   });
 
   socket.on('game:join', payload => {
