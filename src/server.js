@@ -21,7 +21,7 @@ const sessionOptions = Object.assign({}, config.session, {
   store: new RedisStore({})
 });
 
-app.use(session(sessionOptions));
+const sessionMiddleware = session(sessionOptions);
 
 let nunjunksConfig = {
   autoescape: true,
@@ -53,7 +53,7 @@ const quoteService = new QuoteService();
 quoteService.build()
   .then(service => {
     app.set('quote_service', service);
-    routes(app);
+    routes(app, sessionMiddleware);
     sockets(io);
     boot(app);
   });

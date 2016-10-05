@@ -1,9 +1,17 @@
+const SocketActions = require('./sockets').actions;
 const bodyParser = require('body-parser');
 
+const GameRouter = require('./routers/game');
 const jsonParser = bodyParser.json();
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-module.exports = function (app) {
+module.exports = function (app, session) {
+
+  app.use('/guess', GameRouter(
+    [session, jsonParser],
+    app.get('quote_service'),
+    SocketActions
+  ));
+
   app.get('/', (req, res) => {
     let bodyClass = '';
     const quote = req.app.get('quote_service').getRandomQuote();
@@ -30,72 +38,7 @@ module.exports = function (app) {
     res.render('quote.html.twig', { quote, bodyClass });
   });
 
-  app.get('/guess/new', (req, res) => {
-    const quoteService = req.app.get('quote_service');
-    const { id, quote, speaker, game } = quoteService.getRandomQuote();
-    const gameMode = req.session.gameMode;
-
-    switch (gameMode) {
-      case 'hardmode':
-        return res.json({ id, quote });
-
-      case 'show':
-        return res.json({ id, quote, game });
-
-      case 'person':
-        return res.json({ id, quote, speaker });
-    }
-  });
-
-  app.get('/guess', (req, res) => {
-    const session = req.session;
-    const gameMode = session.gameMode || 'hardmode';
-    session.score = session.score || 0;
-
-    const quoteService = req.app.get('quote_service');
-    const quote = quoteService.getRandomQuoteForDifficulty(gameMode);
-    const origins = quoteService.getOrigins();
-    const speakers = {
-      liam: 'Liam',
-      wool: 'Woolie',
-      matt: 'Matt',
-      pat: 'Pat'
-    };
-
-    const jsonOrigins = Object.keys(origins)
-      .reduce((accl, el) => {
-        accl.push({ label: origins[el], value: el });
-        return accl;
-      }, []);
-
-    res.render('guess.html.twig', {
-      quote,
-      origins,
-      speakers,
-      gameMode,
-      jsonOrigins
-    });
-  });
-
-  app.post('/guess', jsonParser, (req, res) => {
-    const body = req.body;
-    const session = req.session;
-
-    if (!body.id) {
-      return res.redirect('/guess');
-    }
-
-    const quoteService = req.app.get('quote_service');
-    if (quoteService.isCorrect(body, session.gameMode === 'hardmode')) {
-      session.score++;
-      return res.json({ status: 'SUCCESS', score: session.score });
-    }
-
-    const correctAnswer = quoteService.findById(body.id);
-    return res.json({ status: 'FAILED', score: session.score, correctAnswer });
-  });
-
-  app.post('/difficulty', jsonParser, (req, res) => {
+  app.post('/difficulty', session, jsonParser, (req, res) => {
     const difficulty = req.body['difficulty'];
     const session = req.session;
 
@@ -105,5 +48,16 @@ module.exports = function (app) {
     }
 
     return res.statusCode(400).json({ status: 'ERROR' });
+  });
+
+  app.post('/join', session, jsonParser, (req, res) => {
+    const body = req.body;
+    const session = req.session;
+    const player = Object.assign({}, body, { id: `player_${Date.now()}`});
+
+    session.player = player;
+
+    SocketActions.joinGame(player);
+    return res.json(player);
   });
 };

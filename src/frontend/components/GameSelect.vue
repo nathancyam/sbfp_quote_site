@@ -1,12 +1,7 @@
 <template>
   <div>
     <p class="quote-game" v-if="plainValue">{{ plainValue }}</p>
-    <select-node v-else
-     :name-value="showValue"
-     :select-value="show"
-     :select-options="options"
-     @update="update"
-    ></select-node>
+    <select-node v-else :options="options" @update="update" />
   </div>
 </template>
 <script>
@@ -16,6 +11,6 @@
     components: {
       SelectNode
     },
-    props: ['showValue', 'show', 'options', 'update', 'plainValue']
+    props: ['options', 'plainValue', 'update']
   }
 </script>

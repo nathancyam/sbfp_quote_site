@@ -1,7 +1,7 @@
 <template>
   <div id="score-board">
-    <input type="text" v-model="name" placeholder="Zaibatsu Grunt" />
-    <button type="button" v-on:click="joinGame">Join Game</button>
+    <input type="text" v-model="name" placeholder="Zaibatsu Grunt" @change="onNameChange($event)" />
+    <button type="button" @click="joinGame" v-show="!hasPlayerId">Join Game</button>
     <ul>
       <li v-for="player in scoreboard.players">
         {{ player }}
@@ -12,26 +12,24 @@
 <style>
 </style>
 <script>
-  import { socket } from '../main';
-
   export default {
-    props: ['setPlayerDetails', 'player'],
-    data() {
-      return {
-        name: '',
-        scoreboard: {}
-      };
-    },
-    created() {
-      socket.on('game:state_change', gameState => {
-        this.scoreboard = gameState;
-      });
+    computed: {
+      scoreboard() {
+        return this.$store.state.scoreboard;
+      },
+      name() {
+        return this.$store.state.player.name;
+      },
+      hasPlayerId() {
+        return this.$store.state.player.id !== '';
+      }
     },
     methods: {
+      onNameChange(event) {
+        this.$store.commit('updatePlayerName', event.target.value);
+      },
       joinGame() {
-        const id = `player_${Date.now()}`;
-        this.setPlayerDetails({ id, name: this.name });
-        socket.emit('game:join', { id, name: this.name, score: 0 });
+        this.$store.dispatch('createNewPlayer', { name: this.name, score: 0 });
       }
     }
   }

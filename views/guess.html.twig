@@ -6,15 +6,17 @@
             <a href="/">Difficulty is too strong. Back down like a coward</a>
             <div id="score"></div>
         </div>
-        <div id="game"></div>
+        <div id="game">
+            <router-link to="/join">Join Game</router-link>
+            <router-link to="/start">Start Game</router-link>
+            <router-view></router-view>
+        </div>
     </section>
 {% endblock %}
 
 {% block templates %}
     <script type="text/javascript">
-    var origins = {{ jsonOrigins | dump | safe }};
-    var quote = {{ quote | dump | safe }};
-    var difficulty = {{ gameMode | dump | safe }};
+    var __INITIAL_STATE__ = {{ state | dump | safe }};
     </script>
 {% endblock %}
 

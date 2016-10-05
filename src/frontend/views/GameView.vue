@@ -24,13 +24,12 @@
   </div>
 </template>
 <script>
-  import SelectNode from './Select.vue';
-  import Quote from './Quote.vue';
-  import GameSelect from './GameSelect.vue';
-  import PersonSelect from './PersonSelect.vue';
-  import Scoreboard from './Scoreboard.vue';
-  import { socket } from '../main';
   import { mapState, mapActions } from 'vuex';
+  import SelectNode from '../components/Select.vue';
+  import Quote from '../components/Quote.vue';
+  import GameSelect from '../components/GameSelect.vue';
+  import PersonSelect from '../components/PersonSelect.vue';
+  import Scoreboard from '../components/Scoreboard.vue';
 
   const _methods = Object.assign({}, mapActions([
     'submitAnswer',

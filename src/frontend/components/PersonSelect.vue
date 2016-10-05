@@ -1,12 +1,7 @@
 <template>
   <div>
     <p class="quote-speaker" v-if="plainValue">{{ plainValue }}</p>
-    <select-node v-else
-     :name-value="personValue"
-     :select-value="person"
-     :select-options="options"
-     @update="update"
-    ></select-node>
+    <select-node v-else :options="options" @update="update" />
   </div>
 </template>
 <style>
@@ -18,6 +13,6 @@
     components: {
       SelectNode
     },
-    props: ['personValue', 'person', 'options', 'update', 'plainValue']
+    props: ['options', 'plainValue', 'update']
   }
 </script>

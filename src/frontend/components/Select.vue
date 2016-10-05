@@ -1,6 +1,6 @@
 <template>
-  <select v-model="selected" v-bind:name="name" v-bind:id="name" v-on:change="onChange">
-    <option v-for="option in options" v-bind:value="option.value">
+  <select v-model="options.selectedValue" :name="name" :id="name" @change="onUpdate">
+    <option v-for="option in options.options" :value="option.value">
       {{ option.label }}
     </option>
   </select>
@@ -8,18 +8,15 @@
 
 <script>
   export default {
-    props: ['selectValue', 'selectOptions', 'nameValue'],
-    template: '#tmpl-select',
-    data() {
-      return {
-        name: this.nameValue,
-        selected: this.selectValue,
-        options: this.selectOptions
+    props: ['options'],
+    computed: {
+      name() {
+        return this.options.nameAttr;
       }
     },
     methods: {
-      onChange() {
-        this.$emit('update', this.selected);
+      onUpdate() {
+        this.$emit('update', this.options.selectedValue);
       }
     }
   }

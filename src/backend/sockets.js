@@ -1,9 +1,17 @@
-const { createStore, combineReducers, bindActionCreators } = require('redux');
+const { createStore, combineReducers, bindActionCreators, applyMiddleware } = require('redux');
 
 const TYPES = {
   GAME_JOIN: Symbol('game_join'),
   GAME_EXIT: Symbol('game_exit'),
   GAME_SCORE_POINT: Symbol('game_score_point')
+};
+
+const logger = store => next => action => {
+  console.dir(action.type);
+  console.info('dispatching', action);
+  let result = next(action);
+  console.log('next state', store.getState());
+  return result;
 };
 
 function socketReducers(initialState = { players: [] }, action) {
@@ -50,7 +58,8 @@ function socketReducers(initialState = { players: [] }, action) {
 }
 
 const store = createStore(
-  combineReducers({ sockets: socketReducers })
+  combineReducers({ sockets: socketReducers }),
+  applyMiddleware(logger)
 );
 
 function joinGame(player) {
