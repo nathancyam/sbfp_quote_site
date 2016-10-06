@@ -1,7 +1,5 @@
 <template>
   <div id="score-board">
-    <input type="text" v-model="name" placeholder="Zaibatsu Grunt" @change="onNameChange($event)" />
-    <button type="button" @click="joinGame" v-show="!hasPlayerId">Join Game</button>
     <ul>
       <li v-for="player in scoreboard.players">
         {{ player }}

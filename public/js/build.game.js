@@ -66,17 +66,17 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vuex = __webpack_require__(27);
+	var _vuex = __webpack_require__(4);
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _vueRouter = __webpack_require__(33);
+	var _vueRouter = __webpack_require__(5);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _store = __webpack_require__(29);
+	var _store = __webpack_require__(6);
 
-	var _routes = __webpack_require__(32);
+	var _routes = __webpack_require__(9);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
@@ -5870,895 +5870,7 @@
 
 
 /***/ },
-/* 4 */,
-/* 5 */,
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-
-	/* script */
-	__vue_exports__ = __webpack_require__(7)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(8)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-3", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-3", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] Select.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-
-	exports.default = {
-	  props: ['options'],
-	  computed: {
-	    name: function name() {
-	      return this.options.nameAttr;
-	    }
-	  },
-	  methods: {
-	    onUpdate: function onUpdate() {
-	      this.$emit('update', this.options.selectedValue);
-	    }
-	  }
-	};
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){with(this) {
-	  return _h('select', {
-	    directives: [{
-	      name: "model",
-	      value: (options.selectedValue),
-	      expression: "options.selectedValue"
-	    }],
-	    attrs: {
-	      "name": name,
-	      "id": name
-	    },
-	    on: {
-	      "change": [function($event) {
-	        options.selectedValue = Array.prototype.filter.call($event.target.options, function(o) {
-	          return o.selected
-	        }).map(function(o) {
-	          return "_value" in o ? o._value : o.value
-	        })[0]
-	      }, onUpdate]
-	    }
-	  }, [_l((options.options), function(option) {
-	    return _h('option', {
-	      domProps: {
-	        "value": option.value
-	      }
-	    }, ["\n    " + _s(option.label) + "\n  "])
-	  })])
-	}},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-3", module.exports)
-	  }
-	}
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-
-	/* script */
-	__vue_exports__ = __webpack_require__(10)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(11)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-2", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-2", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] Quote.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	//
-	//
-	//
-
-	exports.default = {
-	  props: ['currentQuote'],
-	  computed: {
-	    quote: function quote() {
-	      return { text: this.currentQuote.quote };
-	    }
-	  }
-	};
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){with(this) {
-	  return _h('p', {
-	    staticClass: "quote-text"
-	  }, [_s(quote.text)])
-	}},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-2", module.exports)
-	  }
-	}
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-
-	/* script */
-	__vue_exports__ = __webpack_require__(13)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(14)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-5", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-5", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] GameSelect.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Select = __webpack_require__(6);
-
-	var _Select2 = _interopRequireDefault(_Select);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = {
-	  components: {
-	    SelectNode: _Select2.default
-	  },
-	  props: ['options', 'plainValue', 'update']
-	}; //
-	//
-	//
-	//
-	//
-	//
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){with(this) {
-	  return _h('div', [(plainValue) ? _h('p', {
-	    staticClass: "quote-game"
-	  }, [_s(plainValue)]) : _h('select-node', {
-	    attrs: {
-	      "options": options
-	    },
-	    on: {
-	      "update": update
-	    }
-	  }), " "])
-	}},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-5", module.exports)
-	  }
-	}
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-
-	/* styles */
-	__webpack_require__(16)
-
-	/* script */
-	__vue_exports__ = __webpack_require__(20)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(21)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-4", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-4", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] PersonSelect.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(17);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(19)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonSelect.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonSelect.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(18)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
-
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-
-	var replaceText = (function () {
-		var textStore = [];
-
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-
-		if (media) {
-			styleElement.setAttribute("media", media);
-		}
-
-		if (sourceMap) {
-			// https://developer.chrome.com/devtools/docs/javascript-debugging
-			// this makes source maps inside style tags work properly in Chrome
-			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Select = __webpack_require__(6);
-
-	var _Select2 = _interopRequireDefault(_Select);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = {
-	  components: {
-	    SelectNode: _Select2.default
-	  },
-	  props: ['options', 'plainValue', 'update']
-	}; //
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){with(this) {
-	  return _h('div', [(plainValue) ? _h('p', {
-	    staticClass: "quote-speaker"
-	  }, [_s(plainValue)]) : _h('select-node', {
-	    attrs: {
-	      "options": options
-	    },
-	    on: {
-	      "update": update
-	    }
-	  }), " "])
-	}},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-4", module.exports)
-	  }
-	}
-
-/***/ },
-/* 22 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-
-	/* styles */
-	__webpack_require__(23)
-
-	/* script */
-	__vue_exports__ = __webpack_require__(25)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(26)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-6", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-6", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] Scoreboard.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(24);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(19)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Scoreboard.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Scoreboard.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(18)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-
-	exports.default = {
-	  computed: {
-	    scoreboard: function scoreboard() {
-	      return this.$store.state.scoreboard;
-	    },
-	    name: function name() {
-	      return this.$store.state.player.name;
-	    },
-	    hasPlayerId: function hasPlayerId() {
-	      return this.$store.state.player.id !== '';
-	    }
-	  },
-	  methods: {
-	    onNameChange: function onNameChange(event) {
-	      this.$store.commit('updatePlayerName', event.target.value);
-	    },
-	    joinGame: function joinGame() {
-	      this.$store.dispatch('createNewPlayer', { name: this.name, score: 0 });
-	    }
-	  }
-	};
-
-/***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){with(this) {
-	  return _h('div', {
-	    attrs: {
-	      "id": "score-board"
-	    }
-	  }, [_h('input', {
-	    directives: [{
-	      name: "model",
-	      value: (name),
-	      expression: "name"
-	    }],
-	    attrs: {
-	      "type": "text",
-	      "placeholder": "Zaibatsu Grunt"
-	    },
-	    domProps: {
-	      "value": _s(name)
-	    },
-	    on: {
-	      "change": function($event) {
-	        onNameChange($event)
-	      },
-	      "input": function($event) {
-	        if ($event.target.composing) return;
-	        name = $event.target.value
-	      }
-	    }
-	  }), " ", _h('button', {
-	    directives: [{
-	      name: "show",
-	      value: (!hasPlayerId),
-	      expression: "!hasPlayerId"
-	    }],
-	    attrs: {
-	      "type": "button"
-	    },
-	    on: {
-	      "click": joinGame
-	    }
-	  }, ["Join Game"]), " ", _h('ul', [_l((scoreboard.players), function(player) {
-	    return _h('li', ["\n      " + _s(player) + "\n    "])
-	  })])])
-	}},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-6", module.exports)
-	  }
-	}
-
-/***/ },
-/* 27 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7291,203 +6403,7 @@
 	})));
 
 /***/ },
-/* 28 */,
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.bootstrapStore = undefined;
-
-	var _vuex = __webpack_require__(27);
-
-	var _mutations = __webpack_require__(30);
-
-	var _mutations2 = _interopRequireDefault(_mutations);
-
-	var _actions = __webpack_require__(31);
-
-	var _actions2 = _interopRequireDefault(_actions);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var getters = {};
-
-	var bootstrapStore = exports.bootstrapStore = function bootstrapStore() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	  var socket = arguments[1];
-
-	  var bindSocketActions = (0, _actions2.default)(socket);
-
-	  return new _vuex.Store({
-	    state: state,
-	    getters: getters,
-	    actions: bindSocketActions,
-	    mutations: _mutations2.default
-	  });
-	};
-
-/***/ },
-/* 30 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _MutationTypes$UPDATE;
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	var MutationTypes = exports.MutationTypes = {
-	  UPDATE_DIFF: 'updateDiff',
-	  UPDATE_SHOW: 'updateShow',
-	  UPDATE_QUOTE: 'updateQuote',
-	  UPDATE_SCORE: 'updateScore',
-	  UPDATE_PERSON: 'updatePerson',
-	  UPDATE_CORRECT_ANSWER: 'updateCorrectAnswer',
-	  UPDATE_GAME_STATE: 'updateGameState',
-	  UPDATE_GAME_NEW_PLAYER: 'gameNewPlayer',
-	  UPDATE_PLAYER_NAME: 'updatePlayerName'
-	};
-
-	exports.default = (_MutationTypes$UPDATE = {}, _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_DIFF, function (state, diff) {
-	  state.difficultyOptions.selectedValue = diff;
-	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_PERSON, function (state, person) {
-	  state.peopleOptions.selectedValue = person;
-	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_SHOW, function (state, show) {
-	  state.showOptions.selectedValue = show;
-	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_QUOTE, function (state, quote) {
-	  state.quote = quote;
-	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_SCORE, function (state, score) {
-	  state.player.score = score;
-	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_CORRECT_ANSWER, function (state, correctAnswer) {
-	  state.correctAnswer = correctAnswer;
-	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_GAME_STATE, function (state, gameState) {
-	  state.scoreboard = gameState;
-	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_GAME_NEW_PLAYER, function (state, payload) {
-	  state.player = Object.assign({}, { score: 0 }, payload);
-	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_PLAYER_NAME, function (state, name) {
-	  state.player.name = name;
-	}), _MutationTypes$UPDATE);
-
-/***/ },
-/* 31 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _main = __webpack_require__(1);
-
-	var _mutations = __webpack_require__(30);
-
-	function makeSubmitPayload(state) {
-	  var speaker = state.peopleOptions.selectedValue || state.quote.speaker;
-	  var show = state.showOptions.selectedValue || state.quote.game;
-	  var id = state.quote.id;
-	  return { speaker: speaker, show: show, id: id };
-	}
-
-	exports.default = function (socket) {
-	  return {
-	    nextQuote: function nextQuote(_ref) {
-	      var commit = _ref.commit;
-
-	      (0, _main.getNewQuote)().then(function (quote) {
-	        commit(_mutations.MutationTypes.UPDATE_QUOTE, quote);
-	      });
-	    },
-	    requestNewDifficulty: function requestNewDifficulty(_ref2, diff) {
-	      var commit = _ref2.commit;
-
-	      (0, _main.changeDifficulty)({ difficulty: diff }).then(function () {
-	        return (0, _main.getNewQuote)();
-	      }).then(function (quote) {
-	        return commit(_mutations.MutationTypes.UPDATE_QUOTE, quote);
-	      });
-	    },
-	    submitAnswer: function submitAnswer(_ref3) {
-	      var commit = _ref3.commit;
-	      var state = _ref3.state;
-
-	      (0, _main.submitAnswer)(makeSubmitPayload(state)).then(function (_ref4) {
-	        var score = _ref4.score;
-	        var status = _ref4.status;
-	        var correctAnswer = _ref4.correctAnswer;
-
-	        commit(_mutations.MutationTypes.UPDATE_SCORE, score);
-
-	        if (status === 'FAILED') {
-	          commit(_mutations.MutationTypes.UPDATE_CORRECT_ANSWER, correctAnswer);
-	        } else {
-	          commit(_mutations.MutationTypes.UPDATE_CORRECT_ANSWER, false);
-	        }
-
-	        return (0, _main.getNewQuote)();
-	      }).then(function (quote) {
-	        commit(_mutations.MutationTypes.UPDATE_QUOTE, quote);
-	      });
-	    },
-	    updateGameState: function updateGameState(_ref5, gameState) {
-	      var commit = _ref5.commit;
-
-	      commit(_mutations.MutationTypes.UPDATE_GAME_STATE, gameState);
-	    },
-	    createNewPlayer: function createNewPlayer(_ref6, payload) {
-	      var commit = _ref6.commit;
-	      var state = _ref6.state;
-
-	      commit(_mutations.MutationTypes.UPDATE_GAME_NEW_PLAYER, payload);
-	      (0, _main.startGame)({ name: state.player.name }).then(function (player) {
-	        return commit(_mutations.MutationTypes.UPDATE_GAME_NEW_PLAYER, player);
-	      });
-	    }
-	  };
-	};
-
-/***/ },
-/* 32 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.routes = undefined;
-
-	var _vueRouter = __webpack_require__(33);
-
-	var _vueRouter2 = _interopRequireDefault(_vueRouter);
-
-	var _GameView = __webpack_require__(49);
-
-	var _GameView2 = _interopRequireDefault(_GameView);
-
-	var _JoinView = __webpack_require__(52);
-
-	var _JoinView2 = _interopRequireDefault(_JoinView);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var routes = exports.routes = [{ path: '/start', component: _GameView2.default }, { path: '/join', component: _JoinView2.default }];
-
-	exports.default = new _vueRouter2.default({
-	  name: 'hash',
-	  routes: routes
-	});
-
-/***/ },
-/* 33 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9329,181 +8245,92 @@
 	})));
 
 /***/ },
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __vue_exports__, __vue_options__
+	'use strict';
 
-	/* styles */
-	__webpack_require__(40)
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.bootstrapStore = undefined;
 
-	/* script */
-	__vue_exports__ = __webpack_require__(42)
+	var _vuex = __webpack_require__(4);
 
-	/* template */
-	var __vue_template__ = __webpack_require__(43)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	var _mutations = __webpack_require__(7);
 
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-8", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-8", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] Main.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+	var _mutations2 = _interopRequireDefault(_mutations);
 
-	module.exports = __vue_exports__
+	var _actions = __webpack_require__(8);
 
+	var _actions2 = _interopRequireDefault(_actions);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var getters = {};
+
+	var bootstrapStore = exports.bootstrapStore = function bootstrapStore() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var socket = arguments[1];
+
+	  var bindSocketActions = (0, _actions2.default)(socket);
+
+	  return new _vuex.Store({
+	    state: state,
+	    getters: getters,
+	    actions: bindSocketActions,
+	    mutations: _mutations2.default
+	  });
+	};
 
 /***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(41);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(19)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-8!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Main.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-8!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Main.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(18)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 42 */
+/* 7 */
 /***/ function(module, exports) {
 
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	"use strict";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _MutationTypes$UPDATE;
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	var MutationTypes = exports.MutationTypes = {
+	  UPDATE_DIFF: 'updateDiff',
+	  UPDATE_SHOW: 'updateShow',
+	  UPDATE_QUOTE: 'updateQuote',
+	  UPDATE_SCORE: 'updateScore',
+	  UPDATE_PERSON: 'updatePerson',
+	  UPDATE_CORRECT_ANSWER: 'updateCorrectAnswer',
+	  UPDATE_GAME_STATE: 'updateGameState',
+	  UPDATE_GAME_NEW_PLAYER: 'gameNewPlayer',
+	  UPDATE_PLAYER_NAME: 'updatePlayerName'
+	};
+
+	exports.default = (_MutationTypes$UPDATE = {}, _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_DIFF, function (state, diff) {
+	  state.difficultyOptions.selectedValue = diff;
+	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_PERSON, function (state, person) {
+	  state.peopleOptions.selectedValue = person;
+	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_SHOW, function (state, show) {
+	  state.showOptions.selectedValue = show;
+	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_QUOTE, function (state, quote) {
+	  state.quote = quote;
+	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_SCORE, function (state, score) {
+	  state.player.score = score;
+	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_CORRECT_ANSWER, function (state, correctAnswer) {
+	  state.correctAnswer = correctAnswer;
+	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_GAME_STATE, function (state, gameState) {
+	  state.scoreboard = gameState;
+	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_GAME_NEW_PLAYER, function (state, payload) {
+	  state.player = Object.assign({}, { score: 0 }, payload);
+	}), _defineProperty(_MutationTypes$UPDATE, MutationTypes.UPDATE_PLAYER_NAME, function (state, name) {
+	  state.player.name = name;
+	}), _MutationTypes$UPDATE);
 
 /***/ },
-/* 43 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){with(this) {
-	  return _h('div', [_h('router-link', {
-	    attrs: {
-	      "to": "/start"
-	    }
-	  }, ["Start Game"]), " ", _h('router-link', {
-	    attrs: {
-	      "to": "/join"
-	    }
-	  }, ["Join Game"]), " ", _h('router-view')])
-	}},staticRenderFns: []}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-8", module.exports)
-	  }
-	}
-
-/***/ },
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-
-	/* script */
-	__vue_exports__ = __webpack_require__(50)
-
-	/* template */
-	var __vue_template__ = __webpack_require__(51)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-10", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-10", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] GameView.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 50 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9512,25 +8339,177 @@
 	  value: true
 	});
 
-	var _vuex = __webpack_require__(27);
+	var _main = __webpack_require__(1);
 
-	var _Select = __webpack_require__(6);
+	var _mutations = __webpack_require__(7);
+
+	function makeSubmitPayload(state) {
+	  var speaker = state.peopleOptions.selectedValue || state.quote.speaker;
+	  var show = state.showOptions.selectedValue || state.quote.game;
+	  var id = state.quote.id;
+	  return { speaker: speaker, show: show, id: id };
+	}
+
+	exports.default = function (socket) {
+	  return {
+	    nextQuote: function nextQuote(_ref) {
+	      var commit = _ref.commit;
+
+	      (0, _main.getNewQuote)().then(function (quote) {
+	        commit(_mutations.MutationTypes.UPDATE_QUOTE, quote);
+	      });
+	    },
+	    requestNewDifficulty: function requestNewDifficulty(_ref2, diff) {
+	      var commit = _ref2.commit;
+
+	      (0, _main.changeDifficulty)({ difficulty: diff }).then(function () {
+	        return (0, _main.getNewQuote)();
+	      }).then(function (quote) {
+	        return commit(_mutations.MutationTypes.UPDATE_QUOTE, quote);
+	      });
+	    },
+	    submitAnswer: function submitAnswer(_ref3) {
+	      var commit = _ref3.commit;
+	      var state = _ref3.state;
+
+	      (0, _main.submitAnswer)(makeSubmitPayload(state)).then(function (_ref4) {
+	        var score = _ref4.score;
+	        var status = _ref4.status;
+	        var correctAnswer = _ref4.correctAnswer;
+
+	        commit(_mutations.MutationTypes.UPDATE_SCORE, score);
+
+	        if (status === 'FAILED') {
+	          commit(_mutations.MutationTypes.UPDATE_CORRECT_ANSWER, correctAnswer);
+	        } else {
+	          commit(_mutations.MutationTypes.UPDATE_CORRECT_ANSWER, false);
+	        }
+
+	        return (0, _main.getNewQuote)();
+	      }).then(function (quote) {
+	        commit(_mutations.MutationTypes.UPDATE_QUOTE, quote);
+	      });
+	    },
+	    updateGameState: function updateGameState(_ref5, gameState) {
+	      var commit = _ref5.commit;
+
+	      commit(_mutations.MutationTypes.UPDATE_GAME_STATE, gameState);
+	    },
+	    createNewPlayer: function createNewPlayer(_ref6, payload) {
+	      var commit = _ref6.commit;
+	      var state = _ref6.state;
+
+	      commit(_mutations.MutationTypes.UPDATE_GAME_NEW_PLAYER, payload);
+	      (0, _main.startGame)({ name: state.player.name }).then(function (player) {
+	        return commit(_mutations.MutationTypes.UPDATE_GAME_NEW_PLAYER, player);
+	      });
+	    }
+	  };
+	};
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.routes = undefined;
+
+	var _vueRouter = __webpack_require__(5);
+
+	var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+	var _GameView = __webpack_require__(10);
+
+	var _GameView2 = _interopRequireDefault(_GameView);
+
+	var _JoinView = __webpack_require__(34);
+
+	var _JoinView2 = _interopRequireDefault(_JoinView);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var routes = exports.routes = [{ path: '/start', component: _GameView2.default }, { path: '/join', component: _JoinView2.default }];
+
+	exports.default = new _vueRouter2.default({
+	  name: 'hash',
+	  routes: routes
+	});
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+
+	/* script */
+	__vue_exports__ = __webpack_require__(11)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(33)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-2", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-2", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] GameView.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vuex = __webpack_require__(4);
+
+	var _Select = __webpack_require__(12);
 
 	var _Select2 = _interopRequireDefault(_Select);
 
-	var _Quote = __webpack_require__(9);
+	var _Quote = __webpack_require__(15);
 
 	var _Quote2 = _interopRequireDefault(_Quote);
 
-	var _GameSelect = __webpack_require__(12);
+	var _GameSelect = __webpack_require__(18);
 
 	var _GameSelect2 = _interopRequireDefault(_GameSelect);
 
-	var _PersonSelect = __webpack_require__(15);
+	var _PersonSelect = __webpack_require__(21);
 
 	var _PersonSelect2 = _interopRequireDefault(_PersonSelect);
 
-	var _Scoreboard = __webpack_require__(22);
+	var _Scoreboard = __webpack_require__(28);
 
 	var _Scoreboard2 = _interopRequireDefault(_Scoreboard);
 
@@ -9604,7 +8583,857 @@
 	};
 
 /***/ },
-/* 51 */
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+
+	/* script */
+	__vue_exports__ = __webpack_require__(13)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(14)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-4", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-4", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] Select.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	exports.default = {
+	  props: ['options'],
+	  computed: {
+	    name: function name() {
+	      return this.options.nameAttr;
+	    }
+	  },
+	  methods: {
+	    onUpdate: function onUpdate() {
+	      this.$emit('update', this.options.selectedValue);
+	    }
+	  }
+	};
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){with(this) {
+	  return _h('select', {
+	    directives: [{
+	      name: "model",
+	      value: (options.selectedValue),
+	      expression: "options.selectedValue"
+	    }],
+	    attrs: {
+	      "name": name,
+	      "id": name
+	    },
+	    on: {
+	      "change": [function($event) {
+	        options.selectedValue = Array.prototype.filter.call($event.target.options, function(o) {
+	          return o.selected
+	        }).map(function(o) {
+	          return "_value" in o ? o._value : o.value
+	        })[0]
+	      }, onUpdate]
+	    }
+	  }, [_l((options.options), function(option) {
+	    return _h('option', {
+	      domProps: {
+	        "value": option.value
+	      }
+	    }, ["\n    " + _s(option.label) + "\n  "])
+	  })])
+	}},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-4", module.exports)
+	  }
+	}
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+
+	/* script */
+	__vue_exports__ = __webpack_require__(16)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(17)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-5", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-5", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] Quote.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	//
+	//
+	//
+
+	exports.default = {
+	  props: ['currentQuote'],
+	  computed: {
+	    quote: function quote() {
+	      return { text: this.currentQuote.quote };
+	    }
+	  }
+	};
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){with(this) {
+	  return _h('p', {
+	    staticClass: "quote-text"
+	  }, [_s(quote.text)])
+	}},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-5", module.exports)
+	  }
+	}
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+
+	/* script */
+	__vue_exports__ = __webpack_require__(19)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(20)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-6", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-6", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] GameSelect.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _Select = __webpack_require__(12);
+
+	var _Select2 = _interopRequireDefault(_Select);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	  components: {
+	    SelectNode: _Select2.default
+	  },
+	  props: ['options', 'plainValue', 'update']
+	}; //
+	//
+	//
+	//
+	//
+	//
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){with(this) {
+	  return _h('div', [(plainValue) ? _h('p', {
+	    staticClass: "quote-game"
+	  }, [_s(plainValue)]) : _h('select-node', {
+	    attrs: {
+	      "options": options
+	    },
+	    on: {
+	      "update": update
+	    }
+	  }), " "])
+	}},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-6", module.exports)
+	  }
+	}
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+
+	/* styles */
+	__webpack_require__(22)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(26)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(27)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-7", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-7", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] PersonSelect.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(23);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(25)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonSelect.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonSelect.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(24)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _Select = __webpack_require__(12);
+
+	var _Select2 = _interopRequireDefault(_Select);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	  components: {
+	    SelectNode: _Select2.default
+	  },
+	  props: ['options', 'plainValue', 'update']
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){with(this) {
+	  return _h('div', [(plainValue) ? _h('p', {
+	    staticClass: "quote-speaker"
+	  }, [_s(plainValue)]) : _h('select-node', {
+	    attrs: {
+	      "options": options
+	    },
+	    on: {
+	      "update": update
+	    }
+	  }), " "])
+	}},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-7", module.exports)
+	  }
+	}
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+
+	/* styles */
+	__webpack_require__(29)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(31)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(32)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-8", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-8", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] Scoreboard.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(30);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(25)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-8!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Scoreboard.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-8!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Scoreboard.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(24)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	exports.default = {
+	  computed: {
+	    scoreboard: function scoreboard() {
+	      return this.$store.state.scoreboard;
+	    },
+	    name: function name() {
+	      return this.$store.state.player.name;
+	    },
+	    hasPlayerId: function hasPlayerId() {
+	      return this.$store.state.player.id !== '';
+	    }
+	  },
+	  methods: {
+	    onNameChange: function onNameChange(event) {
+	      this.$store.commit('updatePlayerName', event.target.value);
+	    },
+	    joinGame: function joinGame() {
+	      this.$store.dispatch('createNewPlayer', { name: this.name, score: 0 });
+	    }
+	  }
+	};
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){with(this) {
+	  return _h('div', {
+	    attrs: {
+	      "id": "score-board"
+	    }
+	  }, [_h('ul', [_l((scoreboard.players), function(player) {
+	    return _h('li', ["\n      " + _s(player) + "\n    "])
+	  })])])
+	}},staticRenderFns: []}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-8", module.exports)
+	  }
+	}
+
+/***/ },
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){with(this) {
@@ -9653,24 +9482,24 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-10", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-2", module.exports)
 	  }
 	}
 
 /***/ },
-/* 52 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 
 	/* styles */
-	__webpack_require__(53)
+	__webpack_require__(35)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(55)
+	__vue_exports__ = __webpack_require__(37)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(56)
+	var __vue_template__ = __webpack_require__(38)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -9692,9 +9521,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-11", __vue_options__)
+	    hotAPI.createRecord("data-v-3", __vue_options__)
 	  } else {
-	    hotAPI.reload("data-v-11", __vue_options__)
+	    hotAPI.reload("data-v-3", __vue_options__)
 	  }
 	})()}
 	if (__vue_options__.functional) {console.error("[vue-loader] JoinView.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -9703,23 +9532,23 @@
 
 
 /***/ },
-/* 53 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(54);
+	var content = __webpack_require__(36);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(19)(content, {});
+	var update = __webpack_require__(25)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-11!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./JoinView.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-11!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./JoinView.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./JoinView.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./JoinView.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -9729,24 +9558,24 @@
 	}
 
 /***/ },
-/* 54 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(18)();
+	exports = module.exports = __webpack_require__(24)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 55 */
+/* 37 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -9758,30 +9587,152 @@
 	//
 	//
 	//
+	//
+	//
 
 	exports.default = {
-	  data: function data() {
-	    return {};
+	  computed: {
+	    hasPlayerId: function hasPlayerId() {
+	      return this.$store.state.player.id !== '';
+	    }
+	  },
+	  created: function created() {
+	    if (this.$store.state.player.id !== '') {
+	      this.$router.push('/start');
+	    }
+	  },
+
+	  methods: {
+	    onNameChange: function onNameChange(event) {
+	      this.$store.commit('updatePlayerName', event.target.value);
+	    },
+	    joinGame: function joinGame() {
+	      this.$store.dispatch('createNewPlayer', { name: this.name, score: 0 });
+	      this.$router.push('/start');
+	    }
 	  }
 	};
 
 /***/ },
-/* 56 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){with(this) {
-	  return _m(0)
-	}},staticRenderFns: [function (){with(this) {
 	  return _h('div', {
 	    attrs: {
 	      "id": "join"
 	    }
-	  }, [_h('h1', ["Join Game"])])
+	  }, [_m(0), " ", _h('input', {
+	    directives: [{
+	      name: "model",
+	      value: (name),
+	      expression: "name"
+	    }],
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "Zaibatsu Grunt"
+	    },
+	    domProps: {
+	      "value": _s(name)
+	    },
+	    on: {
+	      "change": function($event) {
+	        onNameChange($event)
+	      },
+	      "input": function($event) {
+	        if ($event.target.composing) return;
+	        name = $event.target.value
+	      }
+	    }
+	  }), " ", _h('button', {
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": joinGame
+	    }
+	  }, ["Join Game"])])
+	}},staticRenderFns: [function (){with(this) {
+	  return _h('h1', ["Join Game"])
 	}}]}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-11", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-3", module.exports)
+	  }
+	}
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+
+	/* template */
+	var __vue_template__ = __webpack_require__(43)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-1", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-1", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] Main.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){with(this) {
+	  return _h('section', {
+	    attrs: {
+	      "id": "game"
+	    }
+	  }, [_h('nav', [_h('router-link', {
+	    attrs: {
+	      "to": "/start"
+	    }
+	  }, ["Start Game"]), " ", _h('router-link', {
+	    attrs: {
+	      "to": "/join"
+	    }
+	  }, ["Join Game"]), " ", _m(0)]), " ", _h('router-view')])
+	}},staticRenderFns: [function (){with(this) {
+	  return _h('a', {
+	    attrs: {
+	      "href": "/"
+	    }
+	  }, ["Difficulty is too strong. Back down like a coward"])
+	}}]}
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-1", module.exports)
 	  }
 	}
 

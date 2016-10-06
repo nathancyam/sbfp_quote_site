@@ -1,14 +1,6 @@
-$matt-bg: black;
-$matt-text: white;
-
-$liam-bg: white;
-$liam-text: black;
-
-$pat-bg: #ff6a00;
-$pat-text: white;
-
-$wool-bg: #821a82;
-$wool-text: #20ce48;
+@import 'variables';
+@import 'quote/quote';
+@import 'game/game';
 
 html, body {
   height: 100%;
@@ -21,8 +13,6 @@ html, body {
 
 body, #quote-container, #guess-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
 }
 
@@ -41,44 +31,9 @@ body, #quote-container, #guess-container {
   }
 }
 
-#quote-container, #guess-container {
+#quote-container {
   height: 100%;
   flex: 1;
-}
-
-#guess-container {
-  background-color: #193441;
-  color: #91aa9d;
-
-  .guess-game {
-    color: #a9c7b8;
-
-    a {
-      color: #a9c7b8;
-    }
-  }
-
-  select {
-    font-size: 14pt;
-    height: 2.5rem;
-    background-color: white;
-    line-height: 2rem;
-    padding: .5rem .75rem;
-  }
-
-  button {
-    display: inline-block;
-    padding: .5rem;
-    border-color: transparent;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-}
-
-#difficulty {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
 }
 
 #guessForm {
@@ -113,41 +68,6 @@ body, #quote-container, #guess-container {
   }
 }
 
-.quote-liam {
-  background-color: $liam-bg;
-  color: $liam-text;
-
-  .guess-game {
-    color: $liam-text;
-  }
-}
-
-.quote-pat {
-  background-color: $pat-bg;
-  color: $pat-text;
-
-  .guess-game {
-    color: $pat-text;
-  }
-}
-
-.quote-matt {
-  background-color: $matt-bg;
-  color: $matt-text;
-
-  .guess-game {
-    color: $matt-text;
-  }
-}
-
-.quote-wool {
-  background-color: $wool-bg;
-  color: $wool-text;
-
-  .guess-game {
-    color: $wool-text;
-  }
-}
 
 footer {
   position: absolute;

@@ -1,0 +1,41 @@
+#game {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  width: 100%;
+}
+
+#game > * {
+  flex: 1 100%;
+}
+
+#guess-container {
+  background-color: #193441;
+  color: #91aa9d;
+
+  .guess-game {
+    color: #a9c7b8;
+
+    a {
+      color: #a9c7b8;
+    }
+  }
+
+  select {
+    font-size: 14pt;
+    height: 2.5rem;
+    background-color: white;
+    line-height: 2rem;
+    padding: .5rem .75rem;
+  }
+
+  button {
+    display: inline-block;
+    padding: .5rem;
+    border-color: transparent;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+}
+
+

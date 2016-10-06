@@ -1,0 +1,48 @@
+#difficulty {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#quote-container #quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.quote-liam {
+  background-color: $liam-bg;
+  color: $liam-text;
+
+  .guess-game {
+    color: $liam-text;
+  }
+}
+
+.quote-pat {
+  background-color: $pat-bg;
+  color: $pat-text;
+
+  .guess-game {
+    color: $pat-text;
+  }
+}
+
+.quote-matt {
+  background-color: $matt-bg;
+  color: $matt-text;
+
+  .guess-game {
+    color: $matt-text;
+  }
+}
+
+.quote-wool {
+  background-color: $wool-bg;
+  color: $wool-text;
+
+  .guess-game {
+    color: $wool-text;
+  }
+}
