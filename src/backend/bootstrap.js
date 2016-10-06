@@ -40,6 +40,7 @@ module.exports = function (app, io, config) {
   return quoteService.build()
     .then(quoteService => {
       app.set('quote_service', quoteService);
+      app.set('redis', redis);
       routes(app, sessionMiddleware, redis, Sockets.actions);
       Sockets.setupSockets(io, redis);
     });

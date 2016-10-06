@@ -36,7 +36,7 @@ function GameRouter(router, [ quoteService, SocketActions, redis ]) {
 
     const quote = quoteService.getRandomQuoteForDifficulty(gameMode);
     const player = Object.assign({ id: '', name: '', score: 0 }, session.player, { score: session.score });
-    const state = Object.assign({}, initialState, {
+    let state = Object.assign({}, initialState, {
       player,
       quote
     });
@@ -51,7 +51,11 @@ function GameRouter(router, [ quoteService, SocketActions, redis ]) {
     state.difficultyOptions.selectedValue = gameMode;
     state.showOptions.options = showOptions;
 
-    res.render('guess.html.twig', { state });
+    redis.get('game_state')
+      .then(scoreboard => {
+        state = Object.assign({}, state, { scoreboard });
+        res.render('guess.html.twig', { state });
+      });
   });
 
   router.post('/', (req, res) => {

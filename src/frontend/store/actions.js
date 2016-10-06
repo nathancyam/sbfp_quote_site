@@ -1,4 +1,3 @@
-import { getNewQuote, changeDifficulty, submitAnswer, startGame, getScoreboard } from '../main';
 import { MutationTypes as Types } from './mutations';
 
 function makeSubmitPayload(state) {
@@ -8,22 +7,22 @@ function makeSubmitPayload(state) {
   return { speaker, show, id };
 }
 
-export default (socket) => ({
+export default (socket, client) => ({
   nextQuote({ commit }) {
-    getNewQuote()
+    client.getNewQuote()
       .then(quote => {
         commit(Types.UPDATE_QUOTE, quote);
       });
   },
 
   requestNewDifficulty({ commit }, diff) {
-    changeDifficulty({ difficulty: diff })
-      .then(() => getNewQuote())
+    client.changeDifficulty({ difficulty: diff })
+      .then(() => client.getNewQuote())
       .then(quote => commit(Types.UPDATE_QUOTE, quote));
   },
 
   submitAnswer({ commit, state }) {
-    submitAnswer(makeSubmitPayload(state))
+    client.submitAnswer(makeSubmitPayload(state))
       .then(({ score, status, correctAnswer }) => {
         commit(Types.UPDATE_SCORE, score);
 
@@ -33,7 +32,7 @@ export default (socket) => ({
           commit(Types.UPDATE_CORRECT_ANSWER, false);
         }
 
-        return getNewQuote();
+        return client.getNewQuote();
       })
       .then(quote => {
         commit(Types.UPDATE_QUOTE, quote);
@@ -46,16 +45,16 @@ export default (socket) => ({
 
   createNewPlayer({ commit, state }, payload) {
     commit(Types.UPDATE_GAME_NEW_PLAYER, payload);
-    startGame({ name: state.player.name })
+    client.startGame({ name: state.player.name })
       .then(player => commit(Types.UPDATE_GAME_NEW_PLAYER, player));
   },
 
   getScoreboard({ commit }) {
-    getScoreboard()
+    client.getScoreboard()
       .then(scoreboard => commit('updateGameState', scoreboard));
   },
 
   rejoin({ state }) {
-    startGame({ id: state.player.id });
+    client.startGame({ id: state.player.id });
   }
 });
