@@ -1,4 +1,4 @@
-import { getNewQuote, changeDifficulty, submitAnswer, startGame } from '../main';
+import { getNewQuote, changeDifficulty, submitAnswer, startGame, getScoreboard } from '../main';
 import { MutationTypes as Types } from './mutations';
 
 function makeSubmitPayload(state) {
@@ -48,5 +48,14 @@ export default (socket) => ({
     commit(Types.UPDATE_GAME_NEW_PLAYER, payload);
     startGame({ name: state.player.name })
       .then(player => commit(Types.UPDATE_GAME_NEW_PLAYER, player));
+  },
+
+  getScoreboard({ commit }) {
+    getScoreboard()
+      .then(scoreboard => commit('updateGameState', scoreboard));
+  },
+
+  rejoin({ state }) {
+    startGame({ name: state.player.name });
   }
 });

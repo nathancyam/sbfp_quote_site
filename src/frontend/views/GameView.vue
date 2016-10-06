@@ -55,6 +55,10 @@
       showOptions: state => state.showOptions,
       difficultyOptions: state => state.difficultyOptions
     }),
+    created() {
+      this.$store.dispatch('rejoin');
+      this.$store.dispatch('getScoreboard');
+    },
     components: {
       Quote,
       SelectNode,

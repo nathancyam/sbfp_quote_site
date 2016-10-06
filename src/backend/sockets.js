@@ -126,5 +126,5 @@ exports.setupSockets = function (io) {
   });
 };
 
+exports.store = store;
 exports.actions = Actions;
-

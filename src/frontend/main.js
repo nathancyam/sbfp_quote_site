@@ -48,6 +48,10 @@ export function startGame(player) {
   return postRequest('/join', player);
 }
 
+export function getScoreboard() {
+  return getRequest('/guess/scoreboard');
+}
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
