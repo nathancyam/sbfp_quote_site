@@ -1,5 +1,8 @@
 <template>
-  <div id="score-board">
+  <div id="scoreboard">
+    <div class="current-player">
+      Player Name: {{ name }}
+    </div>
     <ul>
       <li v-for="player in scoreboard.players">
         {{ player }}

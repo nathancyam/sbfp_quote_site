@@ -4,3 +4,4 @@ public/css
 scraper/quotes*.json
 config.json
 
+public/js/build.*

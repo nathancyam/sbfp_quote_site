@@ -1,27 +1,28 @@
 <template>
-  <div id="quote">
-    <p>Score: {{ currentScore }}</p>
+  <section>
+    <div id="quote">
+      <p>Score: {{ currentScore }}</p>
 
-    <form id="guessForm">
-      <game-select :options="showOptions" :plain-value="quote.game" :update="updateShow" />
+      <form id="guessForm">
+        <game-select :options="showOptions" :plain-value="quote.game" :update="updateShow" />
 
-      <quote :current-quote="quote" />
+        <quote :current-quote="quote" />
 
-      <person-select :options="peopleOptions" :plain-value="quote.speaker" :update="updatePerson" />
+        <person-select :options="peopleOptions" :plain-value="quote.speaker" :update="updatePerson" />
 
-      <scoreboard />
+        <div class="buttons">
+          <button type="button" @click="submitAnswer">Submit</button>
+          <button type="button" @click="nextQuote">Next Quote</button>
+        </div>
 
-      <div class="buttons">
-        <button type="button" @click="submitAnswer">Submit</button>
-        <button type="button" @click="nextQuote">Next Quote</button>
-      </div>
-
-      <p v-if="correctAnswer">
-        Quote: {{ correctAnswer.quote }}
-        {{ correctAnswer.speaker }} - {{ correctAnswer.game }}
-      </p>
-    </form>
-  </div>
+        <p v-if="correctAnswer">
+          Quote: {{ correctAnswer.quote }}
+          {{ correctAnswer.speaker }} - {{ correctAnswer.game }}
+        </p>
+      </form>
+    </div>
+    <scoreboard />
+  </section>
 </template>
 <script>
   import { mapState, mapActions } from 'vuex';

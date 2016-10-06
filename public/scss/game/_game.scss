@@ -9,6 +9,28 @@
   flex: 1 100%;
 }
 
+nav {
+  padding: 1rem;
+
+  & > a {
+    padding: 1rem;
+    color: black;
+    text-decoration: none;
+  }
+}
+
+#scoreboard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-height: 10rem;
+  background-color: rgba(0,0,0,0.5);
+
+  .current-player {
+    padding: 1rem;
+  }
+}
+
 #guess-container {
   background-color: #193441;
   color: #91aa9d;
