@@ -56,6 +56,6 @@ export default (socket) => ({
   },
 
   rejoin({ state }) {
-    startGame({ name: state.player.name });
+    startGame({ id: state.player.id });
   }
 });

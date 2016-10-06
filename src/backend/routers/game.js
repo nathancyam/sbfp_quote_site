@@ -1,7 +1,7 @@
 const Router = require('express').Router;
 const initialState = require('../../lib/state');
 
-function GameRouter(router, [ quoteService, SocketActions, socketStore ]) {
+function GameRouter(router, [ quoteService, SocketActions, redis ]) {
 
   router.get('/new', (req, res) => {
     const { id, quote, speaker, game } = quoteService.getRandomQuote();
@@ -23,7 +23,10 @@ function GameRouter(router, [ quoteService, SocketActions, socketStore ]) {
   });
 
   router.get('/scoreboard', (req, res) => {
-    return res.json(socketStore.getState().sockets);
+    redis.get('game_state')
+      .then(json => {
+        return res.json(JSON.parse(json).sockets);
+      });
   });
 
   router.get('/', (req, res) => {

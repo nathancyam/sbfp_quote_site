@@ -3,7 +3,7 @@ const _ = require('lodash');
 
 function initializeQuotes() {
   return new Promise((resolve, reject) => {
-    fs.readFile(`${__dirname}/../../scraper/quotes_id.json`, (err, body) => {
+    fs.readFile(`${__dirname}/quotes.json`, (err, body) => {
       if (err) {
         reject(err);
       }

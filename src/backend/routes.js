@@ -1,17 +1,15 @@
-const SocketActions = require('./sockets').actions;
-const store = require('./sockets').store;
 const bodyParser = require('body-parser');
 
 const GameRouter = require('./routers/game');
 const jsonParser = bodyParser.json();
 
-module.exports = function (app, session) {
+module.exports = function (app, session, redis, socketActions) {
 
   app.use('/guess', GameRouter(
     [session, jsonParser],
     app.get('quote_service'),
-    SocketActions,
-    store
+    socketActions,
+    redis
   ));
 
   app.get('/', (req, res) => {
@@ -56,16 +54,16 @@ module.exports = function (app, session) {
     const body = req.body;
     const session = req.session;
 
-    const isReturningPlayer = session.id === body.id;
+    const isReturningPlayer = session.player.id === body.id;
     if (isReturningPlayer) {
-      SocketActions.joinGame(session.player);
+      socketActions.joinGame(session.player);
       return res.json(session.player);
     }
 
     const player = Object.assign({}, body, { id: `player_${Date.now()}`});
     session.player = player;
 
-    SocketActions.joinGame(player);
+    socketActions.joinGame(player);
     return res.json(player);
   });
 };
