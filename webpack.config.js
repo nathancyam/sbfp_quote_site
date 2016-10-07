@@ -29,11 +29,13 @@ const webpackConfig = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+  ]
 };
 
 if (process.env['NODE_ENV'] === 'production') {
-  webpackConfig.plugins.plugins = [
+  webpackConfig.plugins = [
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
