@@ -7,11 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "node-sass --watch --recursive --output public/css --source-map true --source-map-contents public/scss",
     "watch": "nodemon -e js,twig",
-    "front": "webpack --watch"
+    "front": "webpack --watch",
+    "build:sass": "node-sass --outputStyle compressed --output public/css public/scss",
+    "build:prefix": "./node_modules/.bin/postcss --use autoprefixer public/css/*.css -d public/css",
+    "build:js": "webpack",
+    "build": "npm run build:sass; npm run build:prefix; npm run build:js"
   },
   "author": "Nathan Yam",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^6.5.0",
     "body-parser": "^1.15.2",
     "connect-redis": "^3.1.0",
     "express": "^4.14.0",
@@ -20,6 +25,7 @@
     "lodash": "^4.16.2",
     "morgan": "^1.7.0",
     "nunjucks": "^2.5.2",
+    "postcss-cli": "^2.6.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "socket.io": "^1.4.8",

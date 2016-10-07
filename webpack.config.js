@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
+const webpackConfig = {
   entry: [
     path.resolve(__dirname, 'src', 'frontend', 'main')
   ],
@@ -29,12 +29,17 @@ module.exports = {
         ]
       }
     ]
-  },
-  plugins: [
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false
-    //   }
-    // })
-  ]
+  }
 };
+
+if (process.env['NODE_ENV'] === 'production') {
+  webpackConfig.plugins.plugins = [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ];
+}
+
+module.exports = webpackConfig;
