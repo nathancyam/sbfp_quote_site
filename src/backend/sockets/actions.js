@@ -25,10 +25,21 @@ function scorePoint(player, score) {
   };
 }
 
+function changePlayerName(playerId, name) {
+  return {
+    type: TYPES.PLAYER_CHANGE_NAME,
+    payload: {
+      id: playerId,
+      name
+    }
+  };
+}
+
 module.exports = (store) => {
   return bindActionCreators({
     joinGame,
     exitGame,
-    scorePoint
+    scorePoint,
+    changePlayerName
   }, store.dispatch);
 };

@@ -32,7 +32,7 @@ const postRequest = request('POST');
 const getRequest = request('GET');
 
 export function getNewQuote() {
-  return getRequest('/guess/new');
+  return getRequest('/quote/new');
 }
 
 export function changeDifficulty(level) {
@@ -40,14 +40,17 @@ export function changeDifficulty(level) {
 }
 
 export function submitAnswer(answer) {
-  return postRequest('/guess', answer);
+  return postRequest('/game/answer', answer);
 }
 
 export function startGame(player) {
-  return postRequest('/join', player);
+  return postRequest('/game/join', player);
 }
 
 export function getScoreboard() {
-  return getRequest('/guess/scoreboard');
+  return getRequest('/game/scoreboard');
 }
 
+export function changeName(name) {
+  return postRequest('/game/player/name', { name });
+}

@@ -3,6 +3,9 @@ const morgan = require('morgan');
 const session = require('express-session');
 const RedisSession = require('connect-redis')(session);
 const Redis = require('ioredis');
+const RouterProvider = require('./routers/provider');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 const routes = require('./routes');
 const Sockets = require('./sockets');
@@ -39,9 +42,23 @@ module.exports = function (app, io, config) {
 
   return quoteService.build()
     .then(quoteService => {
+
+      const routerBuilder = RouterProvider({
+        sessionMiddleware,
+        jsonParser
+      }, {
+        quoteService,
+        redis,
+        socketActions: Sockets.actions,
+        storeStore: Sockets.store
+      });
+
       app.set('quote_service', quoteService);
       app.set('redis', redis);
-      routes(app, sessionMiddleware, redis, Sockets.actions);
+      routes(app, routerBuilder);
       Sockets.setupSockets(io, redis);
+    })
+    .catch(err => {
+      console.error(err);
     });
 };

@@ -56,7 +56,11 @@
       difficultyOptions: state => state.difficultyOptions
     }),
     created() {
-      this.$store.dispatch('rejoin');
+      if (this.$store.state.player.id === '') {
+        this.$router.push('/join');
+      } else if (!this.$store.state.isNew) {
+        this.$store.dispatch('rejoin');
+      }
       this.$store.dispatch('getScoreboard');
     },
     components: {

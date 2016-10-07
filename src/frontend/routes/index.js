@@ -1,10 +1,12 @@
 import VueRouter from 'vue-router';
-import GameComponent from '../views/GameView.vue';
-import JoinComponent from '../views/JoinView.vue';
+import GameView from '../views/GameView.vue';
+import JoinView from '../views/JoinView.vue';
+import ProfileView from '../views/ProfileView.vue';
 
 export const routes = [
-  { path: '/start', component: GameComponent, },
-  { path: '/join', component: JoinComponent, }
+  { path: '/start', component: GameView, },
+  { path: '/join', component: JoinView, },
+  { path: '/profile', component: ProfileView }
 ];
 
 export default new VueRouter({

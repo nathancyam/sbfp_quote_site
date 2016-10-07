@@ -1,25 +1,32 @@
-const Router = require('express').Router;
-const initialState = require('../../lib/state');
+const initialState = require('../../../lib/state');
 
-function GameRouter(router, [ quoteService, SocketActions, redis ]) {
+function GameRouter(router, quoteService, SocketActions, redis) {
 
-  router.get('/new', (req, res) => {
-    const { id, quote, speaker, game } = quoteService.getRandomQuote();
-    const gameMode = req.session.gameMode;
+  router.post('/join', (req, res) => {
+    const body = req.body;
+    const session = req.session;
 
-    switch (gameMode) {
-      case 'hardmode':
-        return res.json({ id, quote });
-
-      case 'show':
-        return res.json({ id, quote, game });
-
-      case 'person':
-        return res.json({ id, quote, speaker });
-
-      default:
-        return res.json({ id, quote, speaker });
+    const isReturningPlayer = (typeof session.player !== 'undefined' && session.player.id === body.id);
+    if (isReturningPlayer) {
+      SocketActions.joinGame(session.player);
+      return res.json(session.player);
     }
+
+    const player = Object.assign({}, body, { id: `player_${Date.now()}`, score: 0 });
+    session.player = player;
+    session.gameMode = 'show';
+
+    SocketActions.joinGame(player);
+    return res.json(player);
+  });
+
+  router.post('/player/name', (req, res) => {
+    const name = encodeURIComponent(req.body.name);
+    const session = req.session;
+
+    session.player.name = name;
+    SocketActions.changePlayerName(session.player.id, name);
+    return res.json(session.player);
   });
 
   router.get('/scoreboard', (req, res) => {
@@ -31,7 +38,7 @@ function GameRouter(router, [ quoteService, SocketActions, redis ]) {
 
   router.get('/', (req, res) => {
     const session = req.session;
-    const gameMode = session.gameMode || 'person';
+    const gameMode = session.gameMode || 'show';
     session.score = session.score || 0;
 
     const quote = quoteService.getRandomQuoteForDifficulty(gameMode);
@@ -58,12 +65,12 @@ function GameRouter(router, [ quoteService, SocketActions, redis ]) {
       });
   });
 
-  router.post('/', (req, res) => {
+  router.post('/answer', (req, res) => {
     const body = req.body;
     const session = req.session;
 
     if (!body.id) {
-      return res.redirect('/guess');
+      return res.redirect('/game');
     }
 
     if (quoteService.isCorrect(body, session.gameMode === 'hardmode')) {
@@ -79,10 +86,7 @@ function GameRouter(router, [ quoteService, SocketActions, redis ]) {
   return router;
 }
 
-module.exports = (middlewares, ...dependencies) => {
+GameRouter.middleware = ['sessionMiddleware', 'jsonParser'];
+GameRouter.dependencies = ['quoteService', 'socketActions', 'redis'];
 
-  const router = Router();
-  middlewares.forEach(middleware => router.use(middleware));
-
-  return GameRouter(router, dependencies);
-};
+module.exports = GameRouter;

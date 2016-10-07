@@ -25,6 +25,7 @@ export default {
 
   [MutationTypes.UPDATE_QUOTE] (state, quote) {
     state.quote = quote;
+    state.isNew = false;
   },
 
   [MutationTypes.UPDATE_SCORE] (state, score) {
@@ -41,6 +42,7 @@ export default {
 
   [MutationTypes.UPDATE_GAME_NEW_PLAYER] (state, payload) {
     state.player = Object.assign({}, { score: 0 }, payload);
+    state.isNew = true;
   },
 
   [MutationTypes.UPDATE_PLAYER_NAME] (state, name) {

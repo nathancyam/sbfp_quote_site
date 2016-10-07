@@ -1,16 +1,6 @@
-const bodyParser = require('body-parser');
+const { GameRouter, QuoteRouter } = require('./routers');
 
-const GameRouter = require('./routers/game');
-const jsonParser = bodyParser.json();
-
-module.exports = function (app, session, redis, socketActions) {
-
-  app.use('/guess', GameRouter(
-    [session, jsonParser],
-    app.get('quote_service'),
-    socketActions,
-    redis
-  ));
+module.exports = function (app, routerBuilder) {
 
   app.get('/', (req, res) => {
     let bodyClass = '';
@@ -38,32 +28,6 @@ module.exports = function (app, session, redis, socketActions) {
     res.render('quote.html.twig', { quote, bodyClass });
   });
 
-  app.post('/difficulty', session, jsonParser, (req, res) => {
-    const difficulty = req.body['difficulty'];
-    const session = req.session;
-
-    if (['person', 'show', 'hardmode'].find(el => difficulty)) {
-      session.gameMode = difficulty;
-      return res.json({ status: 'SUCCESS', message: `Difficulty updated to ${difficulty}`});
-    }
-
-    return res.statusCode(400).json({ status: 'ERROR' });
-  });
-
-  app.post('/join', session, jsonParser, (req, res) => {
-    const body = req.body;
-    const session = req.session;
-
-    const isReturningPlayer = session.player.id === body.id;
-    if (isReturningPlayer) {
-      socketActions.joinGame(session.player);
-      return res.json(session.player);
-    }
-
-    const player = Object.assign({}, body, { id: `player_${Date.now()}`});
-    session.player = player;
-
-    socketActions.joinGame(player);
-    return res.json(player);
-  });
+  app.use('/quote', routerBuilder(QuoteRouter));
+  app.use('/game', routerBuilder(GameRouter));
 };

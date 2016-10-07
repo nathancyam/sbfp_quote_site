@@ -43,6 +43,11 @@ export default (socket, client) => ({
     commit(Types.UPDATE_GAME_STATE, gameState);
   },
 
+  updatePlayerName({ commit }, playerName) {
+    client.changeName(playerName)
+      .then(player => commit(Types.UPDATE_PLAYER_NAME, playerName));
+  },
+
   createNewPlayer({ commit, state }, payload) {
     commit(Types.UPDATE_GAME_NEW_PLAYER, payload);
     client.startGame({ name: state.player.name })

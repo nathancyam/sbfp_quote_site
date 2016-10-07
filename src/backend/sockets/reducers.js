@@ -37,6 +37,18 @@ module.exports = (initialState = { players: [] }, action) => {
       return Object.assign({}, initialState, {players: updatePlayers});
     }
 
+    case TYPES.PLAYER_CHANGE_NAME: {
+      const { name, id } = payload;
+      const newPlayers = initialState.players.map(player => {
+        if (player.id === id) {
+          player.name = name;
+        }
+        return player;
+      });
+
+      return Object.assign({}, initialState, newPlayers);
+    }
+
     default: {
       return initialState;
     }

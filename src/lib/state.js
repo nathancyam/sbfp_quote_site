@@ -15,7 +15,7 @@ module.exports = {
     options: []
   },
   difficultyOptions: {
-    selectedValue: 'hardmode',
+    selectedValue: 'show',
     nameAttr: 'difficulty',
     options: [
       { label: 'Hard Mode', value: 'hardmode'},

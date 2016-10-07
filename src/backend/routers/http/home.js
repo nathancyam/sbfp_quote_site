@@ -1,0 +1,2 @@
+function HomeRouter(router, quoteService) {
+}
