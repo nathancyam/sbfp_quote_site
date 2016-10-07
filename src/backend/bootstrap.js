@@ -20,7 +20,7 @@ function nunjucksBoot(app, config) {
   if (process.env['NODE_ENV'] === 'production') {
     app.use(morgan('combined'));
     console.log('Templates: Production');
-    nunjucks.configure(__dirname + '/views', nunjucks);
+    nunjucks.configure(__dirname + '/views', nunjunksConfig);
   } else {
     app.use(morgan('dev'));
     console.log('Templates: Development');
