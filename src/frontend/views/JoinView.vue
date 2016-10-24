@@ -25,8 +25,11 @@
         this.$store.commit('updatePlayerName', event.target.value);
       },
       joinGame() {
-        this.$store.dispatch('createNewPlayer', { name: this.name, score: 0 });
-        this.$router.push('/start');
+        this.$store.dispatch('createNewPlayer', { name: this.name, score: 0 })
+          .then(() => {
+            this.$store.dispatch('registerSocket');
+            this.$router.push('/start');
+          });
       }
     }
   }

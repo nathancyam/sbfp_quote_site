@@ -7,6 +7,8 @@ function makeSubmitPayload(state) {
   return { speaker, show, id };
 }
 
+let isSocketRegistered = false;
+
 export default (socket, client) => ({
   nextQuote({ commit }) {
     client.getNewQuote()
@@ -50,7 +52,7 @@ export default (socket, client) => ({
 
   createNewPlayer({ commit, state }, payload) {
     commit(Types.UPDATE_GAME_NEW_PLAYER, payload);
-    client.startGame({ name: state.player.name })
+    return client.startGame({ name: state.player.name })
       .then(player => commit(Types.UPDATE_GAME_NEW_PLAYER, player));
   },
 
@@ -61,5 +63,21 @@ export default (socket, client) => ({
 
   rejoin({ state }) {
     client.startGame({ id: state.player.id });
+  },
+
+  registerSocket({ state }) {
+    if (!isSocketRegistered) {
+      debugger;
+      socket.emit('socket:register', { playerId: state.player.id });
+      isSocketRegistered = true;
+    }
+  },
+
+  challengePlayer(_, player) {
+    client.challengePlayer({ target: player.id});
+  },
+
+  showChallengeRequest({ commit }, challenger) {
+    commit('addChallenger', challenger);
   }
 });

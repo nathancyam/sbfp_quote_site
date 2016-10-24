@@ -1,6 +1,35 @@
 const TYPES = require('./types');
 
-module.exports = (initialState = { players: [] }, action) => {
+exports.registrar = function(initialState = {}, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case TYPES.SOCKET_REGISTER: {
+      if (!initialState[payload.playerId]) {
+        return Object.assign({}, initialState, { [payload.playerId]: payload.socket });
+      }
+      return initialState;
+    }
+
+    case TYPES.GAME_EXIT: {
+      const playerId = Object.keys(initialState)
+        .filter(key => initialState[key].id === payload.id);
+
+      if (playerId.length === 1) {
+        const cloneState = Object.assign({}, initialState);
+        delete cloneState[playerId[0]];
+        return cloneState;
+      }
+      return initialState;
+    }
+
+    default:
+      return initialState;
+
+  }
+};
+
+exports.sockets = (initialState = { players: [] }, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -13,10 +42,8 @@ module.exports = (initialState = { players: [] }, action) => {
         return initialState;
       }
 
-      console.log(initialState);
       const newState = Object.assign({}, initialState);
       newState.players.push(payload);
-      console.log(newState);
       return newState;
     }
 

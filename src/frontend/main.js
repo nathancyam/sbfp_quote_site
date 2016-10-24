@@ -16,6 +16,10 @@ socket.on('game:state_change', gameState => {
   store.dispatch('updateGameState', gameState);
 });
 
+socket.on('challenge:request', challenger => {
+  store.dispatch('showChallengeRequest', challenger);
+});
+
 new Vue({
   el: '#game',
   router,

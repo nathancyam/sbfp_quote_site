@@ -8,6 +8,7 @@ export const MutationTypes = {
   UPDATE_GAME_STATE: 'updateGameState',
   UPDATE_GAME_NEW_PLAYER: 'gameNewPlayer',
   UPDATE_PLAYER_NAME: 'updatePlayerName',
+  ADD_CHALLENGER: 'addChallenger',
 };
 
 export default {
@@ -47,5 +48,13 @@ export default {
 
   [MutationTypes.UPDATE_PLAYER_NAME] (state, name) {
     state.player.name = name;
+  },
+
+  [MutationTypes.ADD_CHALLENGER] (state, challenger) {
+    const challengers = state.challengers;
+    const hasChallenged = challengers.find(it => it.id == challenger.id);
+    if (!hasChallenged) {
+      state.challengers.push(challenger);
+    }
   }
 };

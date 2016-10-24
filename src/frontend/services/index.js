@@ -54,3 +54,7 @@ export function getScoreboard() {
 export function changeName(name) {
   return postRequest('/game/player/name', { name });
 }
+
+export function challengePlayer(target) {
+  return postRequest('/challenge', target);
+}

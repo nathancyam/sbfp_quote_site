@@ -7,6 +7,7 @@
       <li v-for="player in scoreboard.players" class="scoreboard__entry" :class="{ you: player.isYou }">
         <span class="name">{{ decodeURIComponent(player.name) }}</span>
         <span class="score">{{ player.score }}</span>
+        <span class="challenge" @click="onChallenge(player)">Challenge</span>
       </li>
     </ul>
   </div>
@@ -41,7 +42,10 @@
       },
       joinGame() {
         this.$store.dispatch('createNewPlayer', { name: this.name, score: 0 });
-      }
+      },
+      onChallenge(player) {
+        this.$store.dispatch('challengePlayer', player);
+      },
     }
   }
 </script>

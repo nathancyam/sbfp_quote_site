@@ -35,11 +35,33 @@ function changePlayerName(playerId, name) {
   };
 }
 
+function challengePlayer(challenger, target) {
+  return {
+    type: TYPES.CHALLENGE_PLAYER,
+    payload: {
+      challenger,
+      target
+    }
+  }
+}
+
+function registerSocket(socket, playerId) {
+  return {
+    type: TYPES.SOCKET_REGISTER,
+    payload: {
+      socket,
+      playerId
+    }
+  }
+}
+
 module.exports = (store) => {
   return bindActionCreators({
     joinGame,
     exitGame,
     scorePoint,
-    changePlayerName
+    changePlayerName,
+    challengePlayer,
+    registerSocket
   }, store.dispatch);
 };

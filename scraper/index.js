@@ -30,7 +30,7 @@ const HOST_URL = 'http://twobestfriendsplay.wikia.com';
 const URL = 'http://twobestfriendsplay.wikia.com/api/v1/Articles/List?limit=500';
 
 function getQuotesFromWiki() {
-  request.get(URL)
+  return request.get(URL)
     .then(jsonResponse => {
       const { items } = JSON.parse(jsonResponse);
       const promises = items.map(({ url }) => `${HOST_URL}${url}`)
@@ -53,7 +53,7 @@ function getQuotesFromWiki() {
           text: text.replace("\n", '')
         }));
 
-      return fsWrite(__dirname + '/quotes.json', JSON.stringify(quotes));
+      return fsWrite(__dirname + '/quotes_raw.json', JSON.stringify(quotes));
     })
     .then(() => console.log('wrote quotes to file'))
     .catch(err => console.error(err));
@@ -63,7 +63,7 @@ function getQuotesFromWiki() {
  * @returns {Promise.<Object[]>}
  */
 function getQuotesFromFile() {
-  return fsRead(__dirname + '/quotes.json')
+  return fsRead(__dirname + '/quotes_raw.json')
     .then(quotesRaw => {
       const quotes = JSON.parse(quotesRaw);
       const quoteFmt = quotes.map(({ page, text }) => (
@@ -93,9 +93,10 @@ function getQuotesFromFile() {
     });
 }
 
-getQuotesFromFile()
+getQuotesFromWiki()
+  .then(() => getQuotesFromFile())
   .then(quotes => {
-    return fsWrite(__dirname + '/quotes_id.json', JSON.stringify(quotes));
+    return fsWrite(__dirname + '/quotes.json', JSON.stringify(quotes));
   });
 
 

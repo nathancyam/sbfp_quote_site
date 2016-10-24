@@ -1,4 +1,4 @@
-const { GameRouter, QuoteRouter } = require('./routers');
+const { GameRouter, QuoteRouter, ChallengeRouter } = require('./routers');
 
 module.exports = function (app, routerBuilder) {
 
@@ -30,4 +30,5 @@ module.exports = function (app, routerBuilder) {
 
   app.use('/quote', routerBuilder(QuoteRouter));
   app.use('/game', routerBuilder(GameRouter));
+  app.use(routerBuilder(ChallengeRouter));
 };

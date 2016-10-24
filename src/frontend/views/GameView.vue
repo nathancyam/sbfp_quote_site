@@ -6,6 +6,7 @@
       <form id="guessForm">
         <game-select :options="showOptions" :plain-value="quote.game" :update="updateShow" />
 
+        <challengers />
         <quote :current-quote="quote" />
 
         <person-select :options="peopleOptions" :plain-value="quote.speaker" :update="updatePerson" />
@@ -31,6 +32,7 @@
   import GameSelect from '../components/GameSelect.vue';
   import PersonSelect from '../components/PersonSelect.vue';
   import Scoreboard from '../components/Scoreboard.vue';
+  import Challengers from '../components/Challengers.vue';
 
   const _methods = Object.assign({}, mapActions([
     'submitAnswer',
@@ -68,7 +70,8 @@
       SelectNode,
       GameSelect,
       PersonSelect,
-      Scoreboard
+      Scoreboard,
+      Challengers
     },
     methods: _methods
   }

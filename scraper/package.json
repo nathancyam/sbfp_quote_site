@@ -12,7 +12,6 @@
     "cheerio": "^0.22.0",
     "lodash": "^4.16.2",
     "request": "^2.75.0",
-    "request-promise": "^4.1.1",
-    "sequelize": "^3.24.3"
+    "request-promise": "^4.1.1"
   }
 }

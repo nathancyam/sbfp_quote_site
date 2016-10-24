@@ -1,6 +1,6 @@
 const { createStore, combineReducers, applyMiddleware } = require('redux');
 const reduxThunk = require('redux-thunk').default;
-const socketReducer = require('./reducers');
+const reducers = require('./reducers');
 const bindActions = require('./actions');
 const handler = require('./handler');
 
@@ -13,7 +13,7 @@ const logger = store => next => action => {
 };
 
 const store = createStore(
-  combineReducers({ sockets: socketReducer }),
+  combineReducers({ sockets: reducers.sockets, socketsReg: reducers.registrar }),
   applyMiddleware(logger, reduxThunk)
 );
 

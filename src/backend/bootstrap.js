@@ -30,6 +30,12 @@ function nunjucksBoot(app, config) {
   return app;
 }
 
+/**
+ * @param app
+ * @param io
+ * @param config
+ * @return {Promise.<null>}
+ */
 module.exports = function (app, io, config) {
 
   const redis = new Redis(config.redis);
@@ -50,7 +56,7 @@ module.exports = function (app, io, config) {
         quoteService,
         redis,
         socketActions: Sockets.actions,
-        storeStore: Sockets.store
+        store: Sockets.store
       });
 
       app.set('quote_service', quoteService);
